@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CarApp.Domain.Entities.Car>
+
+@{
+    ViewBag.Title = "Cars";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Licence plate
+            </th>
+            <th>
+                Telephely
+            </th>
+            <th>
+                Műveletek
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>
+                    @car.LicencePlate
+                </td>
+                <td>
+                    @car.Telep
+                </td>
+                <td>
+                    @Html.ActionLink("részletek", "Details", new { id = car.Id })
+                    @Html.ActionLink("szerkesztés", "Edit", new { id = car.Id })
+                    @Html.ActionLink("törlés", "Delete", new { id = car.Id }, new { @class = "DeleteLink" })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.ActionLink("új autó", "Create")
+
+@section scripts {
+    <script type="text/javascript">
+
+        $(function () {
+            $(".DeleteLink").click(function (e) {
+                e.preventDefault();
+
+                var self = $(this);
+                var url = self.attr('href');
+                $.post(url, null, function (data) {
+                    if (data.success) {
+                        self.parent().parent().remove();
+                    }
+                    else {
+                        alert("Hiba!");
+                    }
+                }).fail(function () {
+                    alert("Hiba!");
+                })
+            })
+        });
+
+    </script>
+}
+

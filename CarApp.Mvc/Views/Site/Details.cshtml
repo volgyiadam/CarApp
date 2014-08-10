@@ -1,0 +1,29 @@
+﻿@model CarApp.Domain.Entities.Site
+
+
+@{
+    ViewBag.Title = "Megtekintés";
+}
+
+<style>
+    div {
+        margin: 0 0 10px 5px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+
+<div>
+    Zip Code = @Model.ZipCode
+    Address = @Model.Address
+
+</div>
+<div>
+    <a href="@Url.Action("Index")">Vissza</a>
+    <a href="@Url.Action("Edit", new { id = Model.Id })">Szerkesztés</a>
+</div>

@@ -1,0 +1,28 @@
+﻿
+@model IEnumerable<CarApp.Domain.Entities.Car>
+
+@{
+    ViewBag.Title = "Cars";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Licence plate
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>
+                    @car.LicencePlate
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@model CarApp.Domain.Entities.Car
+
+
+@{
+    ViewBag.Title = "Új autó felvétele";
+}
+
+<style>
+    div {
+        margin: 0 0 10px 5px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.HiddenFor(x => x.Id)
+        Licence Plate : @Html.EditorFor(x => x.LicencePlate)
+
+    </div>
+    <button type="submit">Mentés</button>
+}
+
+
+<div>
+    <a href="@Url.Action("Index")">Vissza</a>
+</div>

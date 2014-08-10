@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CarApp.Domain.Entities.Site>
+
+@{
+    ViewBag.Title = "Sites";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Zip Code
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Műveletek
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var site in Model)
+        {
+            <tr>
+                <td>
+                    @site.ZipCode
+                </td>
+                <td>
+                    @site.Address
+                </td>
+                <td>
+                    @Html.ActionLink("részletek", "Details", new { id = site.Id })
+                    @Html.ActionLink("szerkesztés", "Edit", new { id = site.Id })
+                    @Html.ActionLink("törlés", "Delete", new { id = site.Id }, new { @class = "DeleteLink" })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@Html.ActionLink("Új site", "Create")
+
+@section scripts {
+    <script type="text/javascript">
+
+        $(function () {
+            $(".DeleteLink").click(function (e) {
+                e.preventDefault();
+
+                var self = $(this);
+                var url = self.attr('href');
+                $.post(url, null, function (data) {
+                    if (data.success) {
+                        self.parent().parent().remove();
+                    }
+                    else {
+                        alert("Hiba!");
+                    }
+                }).fail(function () {
+                    alert("Hiba!");
+                })
+            })
+        });
+
+    </script>
+}

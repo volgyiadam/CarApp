@@ -1,0 +1,33 @@
+﻿@model CarApp.Domain.Entities.Site
+
+@{
+    ViewBag.Title = "Telep mód.";
+}
+
+<style>
+    div {
+        margin: 0 0 10px 5px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.HiddenFor(x => x.Id)
+        Zip Code : @Html.EditorFor(x => x.ZipCode)
+        Address : @Html.EditorFor(x => x.Address)
+
+    </div>
+    <button type="submit">Mentés</button>
+}
+
+
+<div>
+    <a href="@Url.Action("Index")">Vissza</a>
+</div>
