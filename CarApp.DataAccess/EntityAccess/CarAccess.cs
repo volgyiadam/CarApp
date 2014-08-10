@@ -42,7 +42,7 @@ namespace CarApp.DataAccess.EntityAccess
 
         public void Update(Car entity)
         {
-            _session().Update(AutoMapper.Mapper.DynamicMap<CarEntity>(entity)); 
+            _session().Update(new CarEntity { Id = entity.Id, LicencePlate = entity.LicencePlate, Site = _session().Get<SiteEntity>(entity.TelepId) });
         }
     }
 }

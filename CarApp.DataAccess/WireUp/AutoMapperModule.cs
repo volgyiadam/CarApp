@@ -18,7 +18,10 @@ namespace CarApp.DataAccess.WireUp
 
         public void Run()
         {
-            AutoMapper.Mapper.CreateMap<CarEntity, Car>().ForMember(x => x.Telep, y => y.MapFrom(z => z.Site!=null? z.Site.Address : ""));
+            AutoMapper.Mapper.CreateMap<CarEntity, Car>()
+                .ForMember(x => x.TelepHelyAddress, y => y.MapFrom(z => z.Site != null ? z.Site.Address : ""))
+                .ForMember(a => a.TelepId, b => b.MapFrom(c => c.Site != null ? c.Site.Id : Guid.Empty));
+                
         }
     }
 }

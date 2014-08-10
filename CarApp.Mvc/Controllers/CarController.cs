@@ -2,16 +2,19 @@
 using System.Web.Mvc;
 using CarApp.Domain;
 using CarApp.Domain.Entities;
+using System.Linq;
 
 namespace CarApp.Mvc.Controllers
 {
     public class CarController : Controller
     {
         private readonly Func<IEntityAccess<Car>> _carAccess;
+        private readonly Func<IEntityAccess<Site>> _siteAccess;
 
-        public CarController(Func<IEntityAccess<Car>> carAccess)
+        public CarController(Func<IEntityAccess<Car>> carAccess, Func<IEntityAccess<Site>> siteAccess)
         {
             _carAccess = carAccess;
+            _siteAccess = siteAccess;
         }
 
         //public ActionResult Test()
@@ -60,6 +63,7 @@ namespace CarApp.Mvc.Controllers
         {
 
             Car model = _carAccess().Get(id.Value);
+            TelephelyekLista();
 
             return View(model);
         }
@@ -82,6 +86,10 @@ namespace CarApp.Mvc.Controllers
             _carAccess().Delete(id);
 
             return new JsonResult() { Data = new { success = true }, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        private void TelephelyekLista()
+        {
+            ViewBag.Telephelyek = _siteAccess().List().Select(y => new SelectListItem { Text = y.Address, Value = y.Id.ToString() });
         }
     }
 }

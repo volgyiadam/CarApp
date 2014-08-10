@@ -17,12 +17,13 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using(Html.BeginForm())
+@using (Html.BeginForm())
 {
     <div>
         @Html.HiddenFor(x => x.Id)
         Licence Plate : @Html.EditorFor(x => x.LicencePlate)
-        
+        Telephely: @Html.DropDownListFor(x => x.TelepId, (IEnumerable<SelectListItem>) ViewBag.Telephelyek)
+
     </div>
     <button type="submit">Mentés</button>
 }
