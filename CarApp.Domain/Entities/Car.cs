@@ -7,7 +7,7 @@ namespace CarApp.Domain.Entities
 
         public string TelepHelyAddress { get; set; }
 
-        public System.Collections.Generic.IEnumerable<Site> Telephelyek { get; set; }
+        //public System.Collections.Generic.IEnumerable<Site> Telephelyek { get; set; }
         public Guid TelepId { get; set; }
     }
 }

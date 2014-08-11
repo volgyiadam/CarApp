@@ -16,7 +16,7 @@ namespace CarApp.DataAccess.Entities
         {
             Id(x => x.Id).GeneratedBy.Guid();
             Map(x => x.LicencePlate);
-            References(x => x.Site).ForeignKey("Site");
+            References(x => x.Site);
         }
     }
 }

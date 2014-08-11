@@ -17,13 +17,6 @@ namespace CarApp.Mvc.Controllers
             _siteAccess = siteAccess;
         }
 
-        //public ActionResult Test()
-        //{
-        //    _carAccess().Save(new Car { LicencePlate = "ABC-123" });
-
-        //    return RedirectToAction("Index");
-        //}
-
         public ActionResult Index()
         {
             var cars = _carAccess().List();
