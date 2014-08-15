@@ -458,7 +458,8 @@ textarea {
     input[type="submit"],
     input[type="button"],
     button {
-        background-color: #d3dce0;
+        background-image:url("../Images/1280x800.jpg");
+        background-color: yellow;
         border: 1px solid #787878;
         cursor: pointer;
         font-size: 1.2em;

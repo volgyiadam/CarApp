@@ -1,0 +1,32 @@
+﻿html {
+    /*background-image:url("../Images/1280x800.jpg");
+    opacity:0.1;
+    background-repeat:no-repeat;*/
+
+}
+
+body {
+    background-image:url("../Images/1280x800.jpg");
+    background-repeat:no-repeat;
+    width:100%;
+    background-size:100%;
+    /*background-color:darkorange;*/
+}
+p{
+    font-family:Britannic;
+    font-size:xx-large;
+    color:royalblue;
+}
+.header{
+    background-color:white;
+    width:100%;
+    height:100px;
+}
+.leftButton{
+    
+    background-color:aqua;
+    float:left;
+    width:50px;
+    height:100%;
+    
+}
